@@ -1,0 +1,13 @@
+{
+    "name": "ProductRequest",
+    "alias": "productrequest",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ProductRequest\\Providers\\ProductRequestServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

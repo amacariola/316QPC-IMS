@@ -1,0 +1,13 @@
+{
+    "name": "ProductReturn",
+    "alias": "productreturn",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ProductReturn\\Providers\\ProductReturnServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
