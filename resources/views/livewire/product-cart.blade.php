@@ -19,7 +19,9 @@
             <table class="table table-bordered">
                 <thead class="thead-dark">
                 <tr>
-                    <th class="align-middle">Product</th>
+                    <th class="align-middle">System Number</th>
+                    <th class="align-middle">Serial Number</th>
+                    <th class="align-middle">Product Name</th>
                     <th class="align-middle">Net Unit Price</th>
                     <th class="align-middle">Stock</th>
                     <th class="align-middle">Quantity</th>
@@ -33,6 +35,12 @@
                     @if($cart_items->isNotEmpty())
                         @foreach($cart_items as $cart_item)
                             <tr>
+                                <td class="align-middle">
+                                    {{ $cart_item->options->system_number }}
+                                </td>
+                                <td class="align-middle">
+                                    {{ $cart_item->serial_number }}
+                                </td>
                                 <td class="align-middle">
                                     {{ $cart_item->name }} <br>
                                     <span class="badge badge-success">

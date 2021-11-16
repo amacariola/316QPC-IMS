@@ -47,6 +47,10 @@ class PurchaseController extends Controller
 
             $purchase = Purchase::create([
                 'date' => $request->date,
+                'delivery_date' => $request->delivery_date,
+                'vendor_invoice' => $request->vendor_invoice,
+                'approval_date'  => $request->approval_date,
+                'delivery_number' => $request->delivery_number,
                 'supplier_id' => $request->supplier_id,
                 'supplier_name' => Supplier::findOrFail($request->supplier_id)->supplier_name,
                 'tax_percentage' => $request->tax_percentage,
@@ -67,6 +71,8 @@ class PurchaseController extends Controller
                 PurchaseDetail::create([
                     'purchase_id' => $purchase->id,
                     'product_id' => $cart_item->id,
+                    'system_number' => $cart_item->system_number,
+                    'serial_number' => $cart_item->serial_number,
                     'product_name' => $cart_item->name,
                     'product_code' => $cart_item->options->code,
                     'quantity' => $cart_item->qty,

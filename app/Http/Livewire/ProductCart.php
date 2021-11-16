@@ -89,6 +89,7 @@ class ProductCart extends Component
                 'product_discount_type' => 'fixed',
                 'sub_total'             => $this->calculate($product)['sub_total'],
                 'code'                  => $product['product_code'],
+                'system_number'         => $product['product_code'].'-'.rand(0,9999),
                 'stock'                 => $product['product_quantity'],
                 'unit'                  => $product['product_unit'],
                 'product_tax'           => $this->calculate($product)['product_tax'],

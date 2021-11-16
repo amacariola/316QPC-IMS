@@ -22,7 +22,7 @@ class SettingDatabaseSeeder extends Seeder
             'notification_email' => 'notification@test.com',
             'default_currency_id' => 1,
             'default_currency_position' => 'prefix',
-            'footer_text' => 'Triangle Pos © 2021 || Developed by <strong>SparkSoft Solutions</strong>',
+            'footer_text' => '316 QPC IMS © 2021 || Developed by <strong>SparkSoft Solutions</strong>',
             'company_address' => ''
         ]);
     }

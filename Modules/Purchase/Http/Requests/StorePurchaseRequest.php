@@ -17,6 +17,8 @@ class StorePurchaseRequest extends FormRequest
         return [
             'supplier_id' => 'required|numeric',
             'reference' => 'required|string|max:255',
+            'vendor_invoice' => 'required|string',
+            'delivery_number' => 'required|string',
             'tax_percentage' => 'required|integer|min:0|max:100',
             'discount_percentage' => 'required|integer|min:0|max:100',
             'shipping_amount' => 'required|numeric',

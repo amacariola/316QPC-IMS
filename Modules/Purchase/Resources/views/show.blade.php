@@ -62,6 +62,7 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
+                                    <th class="align-middle">System Number</th>
                                     <th class="align-middle">Product</th>
                                     <th class="align-middle">Net Unit Price</th>
                                     <th class="align-middle">Quantity</th>
@@ -73,6 +74,9 @@
                                 <tbody>
                                 @foreach($purchase->purchaseDetails as $item)
                                     <tr>
+                                        <td class="align-middle">
+                                            {{ $item->system_number }}
+                                        </td>
                                         <td class="align-middle">
                                             {{ $item->product_name }} <br>
                                             <span class="badge badge-success">

@@ -29,8 +29,8 @@
                             <div class="form-row">
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label for="reference">Reference <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="reference" required readonly value="PR">
+                                        <label for="reference">Document No. <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="reference" required readonly value="{{ 'PO'.'-'.rand(0, 9999999) }}">
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -48,9 +48,29 @@
                                 <div class="col-lg-4">
                                     <div class="from-group">
                                         <div class="form-group">
-                                            <label for="date">Date <span class="text-danger">*</span></label>
+                                            <label for="date"> Purchase Order Date <span class="text-danger">*</span></label>
                                             <input type="date" class="form-control" name="date" required value="{{ now()->format('Y-m-d') }}">
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="from-group">
+                                        <div class="form-group">
+                                            <label for="date"> Delivery Date <span class="text-danger">*</span></label>
+                                            <input type="date" class="form-control" name="delivery_date" required value="{{ now()->format('Y-m-d') }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="reference">Delivery No. <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="delivery_number" >
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="reference">Vendor Invoice <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="vendor_invoice">
                                     </div>
                                 </div>
                             </div>

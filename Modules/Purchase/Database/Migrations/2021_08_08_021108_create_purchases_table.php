@@ -16,7 +16,11 @@ class CreatePurchasesTable extends Migration
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
             $table->date('date');
+            $table->date('approval_date')->nullable();
+            $table->date('delivery_date');
             $table->string('reference');
+            $table->string('vendor_invoice');
+            $table->string('delivery_number');
             $table->unsignedBigInteger('supplier_id')->nullable();
             $table->string('supplier_name');
             $table->integer('tax_percentage')->default(0);

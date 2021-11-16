@@ -24,7 +24,7 @@ class Purchase extends Model
 
         static::creating(function ($model) {
             $number = Purchase::max('id') + 1;
-            $model->reference = make_reference_id('PR', $number);
+            $model->reference = make_reference_id('PO', $number);
         });
     }
 
