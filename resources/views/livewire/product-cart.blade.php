@@ -23,7 +23,6 @@
                     <th class="align-middle">Serial Number</th>
                     <th class="align-middle">Product Name</th>
                     <th class="align-middle">Net Unit Price</th>
-                    <th class="align-middle">Stock</th>
                     <th class="align-middle">Quantity</th>
                     <th class="align-middle">Discount</th>
                     <th class="align-middle">Tax</th>
@@ -51,10 +50,7 @@
 
                                 <td class="align-middle">{{ format_currency($cart_item->options->unit_price) }}</td>
 
-                                <td class="align-middle text-center">
-                                    <span class="badge badge-info">{{ $cart_item->options->stock . ' ' . $cart_item->options->unit }}</span>
-                                </td>
-
+                                
                                 <td class="align-middle">
                                     @include('livewire.includes.product-cart-quantity')
                                 </td>

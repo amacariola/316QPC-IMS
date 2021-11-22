@@ -27,14 +27,8 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="product_name">Product Name <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="product_name" required value="{{ old('product_name') }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="product_code">Code <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="product_code" required value="{{ old('product_code') }}">
+                                        <label for="product_name">Serial Number <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="serial_number" value="{{ 'SR'.rand(0,9999999) }}">
                                     </div>
                                 </div>
                             </div>
@@ -42,15 +36,35 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="category_id">Category <span class="text-danger">*</span></label>
+                                        <label for="category_id">Category Name <span class="text-danger">*</span></label>
                                         <select class="form-control" name="category_id" id="category_id" required>
                                             <option value="" selected disabled>Select Category</option>
-                                            @foreach(\Modules\Product\Entities\Category::all() as $category)
+                                            @foreach(\Modules\Product\Entities\Category::all() as $category )
                                                 <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="category_id">Category Type <span class="text-danger">*</span></label>
+                                        <select class="form-control" name="category_type" id="category_type" required>
+                                            <option value="" selected disabled>Select Category</option>
+                                            @foreach(\Modules\Product\Entities\Category::all() as $category )
+                                                <option value="{{ $category->category_type }}">{{ $category->category_type }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Product Name depends on what is selected on  the category list -->
+                                <input type="hidden" name="system_number" value="{{  $category->category_code.rand(0,9999999) }}">
+                                <input type="hidden" name="product_name" value="{{  $category->category_name  }}">
+                                <input type="hidden" name="product_code" value="{{  $category->category_code  }}">
+
+                                <!-- END --->
+                                
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="barcode_symbology">Barcode Symbology <span class="text-danger">*</span></label>
@@ -81,20 +95,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="product_quantity">Quantity <span class="text-danger">*</span></label>
-                                        <input type="number" class="form-control" name="product_quantity" required value="{{ old('product_quantity') }}" min="1">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="product_stock_alert">Alert Quantity <span class="text-danger">*</span></label>
-                                        <input type="number" class="form-control" name="product_stock_alert" required value="{{ old('product_stock_alert') }}" min="0" max="100">
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="form-row">
                                 <div class="col-md-4">

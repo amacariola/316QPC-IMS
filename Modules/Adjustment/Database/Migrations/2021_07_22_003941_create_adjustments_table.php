@@ -15,10 +15,17 @@ class CreateAdjustmentsTable extends Migration
     {
         Schema::create('adjustments', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->date('date');
+            $table->date('approved_date')->nullable();
+            $table->string('trust_number');
+            $table->date('issue_date')->nullable();
+            $table->date('delivery_date')->nullable();
+            $table->string('delivery_number');
             $table->string('reference');
             $table->text('note')->nullable();
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -26,7 +26,10 @@ class AdjustmentController extends Controller
     public function create() {
         abort_if(Gate::denies('create_adjustments'), 403);
 
-        return view('adjustment::create');
+        $product = Product::select('*')
+                 ->where('borrowed', false )
+                 ->get();
+        return view('adjustment::create', compact('product'));
     }
 
 
@@ -35,6 +38,7 @@ class AdjustmentController extends Controller
 
         $request->validate([
             'reference'   => 'required|string|max:255',
+            'trust_number' => 'required|string|max:255',
             'date'        => 'required|date',
             'note'        => 'nullable|string|max:1000',
             'product_ids' => 'required',
@@ -45,7 +49,10 @@ class AdjustmentController extends Controller
         DB::transaction(function () use ($request) {
             $adjustment = Adjustment::create([
                 'date' => $request->date,
-                'note' => $request->note
+                'note' => $request->note,
+                'user_id' => $request->user_id,
+                'trust_number'=> $request->trust_number,
+                'delivery_number' => $request->delivery_number
             ]);
 
             foreach ($request->product_ids as $key => $id) {
@@ -104,9 +111,11 @@ class AdjustmentController extends Controller
 
         DB::transaction(function () use ($request, $adjustment) {
             $adjustment->update([
-                'reference' => $request->reference,
-                'date'      => $request->date,
-                'note'      => $request->note
+                'reference'    => $request->reference,
+                'date'         => $request->date,
+                'note'         => $request->note,
+                'issue_date'   => $request->issue_date,
+                'approved_date' => $request->approved_date
             ]);
 
             foreach ($adjustment->adjustedProducts as $adjustedProduct) {

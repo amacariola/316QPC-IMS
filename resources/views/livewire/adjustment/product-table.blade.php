@@ -18,7 +18,7 @@
         <table class="table table-bordered">
             <thead>
             <tr class="align-middle">
-                <th class="align-middle">#</th>
+                <th class="align-middle">System Number</th>
                 <th class="align-middle">Product Name</th>
                 <th class="align-middle">Code</th>
                 <th class="align-middle">Stock</th>
@@ -31,7 +31,7 @@
             @if(!empty($products))
                 @foreach($products as $key => $product)
                     <tr>
-                        <td class="align-middle">{{ $key + 1 }}</td>
+                        <td class="align-middle">{{ $product['system_number'] ?? $product['product']['system_number'] }}</td>
                         <td class="align-middle">{{ $product['product_name'] ?? $product['product']['product_name'] }}</td>
                         <td class="align-middle">{{ $product['product_code'] ?? $product['product']['product_code'] }}</td>
                         <td class="align-middle text-center">

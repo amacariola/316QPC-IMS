@@ -39,6 +39,7 @@ class ProductCart extends Component
             foreach ($cart_items as $cart_item) {
                 $this->check_quantity[$cart_item->id] = [$cart_item->options->stock];
                 $this->quantity[$cart_item->id] = $cart_item->qty;
+                $this->item_discount[$cart_item->id] = $cart_item->
                 $this->discount_type[$cart_item->id] = $cart_item->options->product_discount_type;
                 if ($cart_item->options->product_discount_type == 'fixed') {
                     $this->item_discount[$cart_item->id] = $cart_item->options->product_discount;
@@ -90,7 +91,7 @@ class ProductCart extends Component
                 'sub_total'             => $this->calculate($product)['sub_total'],
                 'code'                  => $product['product_code'],
                 'system_number'         => $product['product_code'].'-'.rand(0,9999),
-                'stock'                 => $product['product_quantity'],
+            //  'stock'                 => $product['product_quantity'],
                 'unit'                  => $product['product_unit'],
                 'product_tax'           => $this->calculate($product)['product_tax'],
                 'unit_price'            => $this->calculate($product)['unit_price']
@@ -115,6 +116,11 @@ class ProductCart extends Component
         Cart::instance($this->cart_instance)->setGlobalDiscount((integer)$this->global_discount);
     }
 
+    // Added code 
+    public function updateDiscount() {
+        Cart::instance($this->cart_instance)->setProductDiscount((integer)$this->item_discount);
+    }
+
     public function updateQuantity($row_id, $product_id) {
         if  ($this->cart_instance == 'sale' || $this->cart_instance == 'purchase_return') {
             if ($this->check_quantity[$product_id] < $this->quantity[$product_id]) {
@@ -131,7 +137,7 @@ class ProductCart extends Component
             'options' => [
                 'sub_total'             => $cart_item->price * $cart_item->qty,
                 'code'                  => $cart_item->options->code,
-                'stock'                 => $cart_item->options->stock,
+          //    'stock'                 => $cart_item->options->stock,
                 'unit'                  => $cart_item->options->unit,
                 'product_tax'           => $cart_item->options->product_tax,
                 'unit_price'            => $cart_item->options->unit_price,

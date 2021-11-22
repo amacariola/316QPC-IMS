@@ -62,6 +62,9 @@
                                 @endforeach
                             </table>
                         </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary">Aprrove Request</button>
+                        </div>
                     </div>
                 </div>
             </div>

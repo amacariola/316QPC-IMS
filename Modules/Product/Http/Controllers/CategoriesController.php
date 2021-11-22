@@ -30,6 +30,7 @@ class CategoriesController extends Controller
         Category::create([
             'category_code' => $request->category_code,
             'category_name' => $request->category_name,
+            'category_type' => $request->category_type
         ]);
 
         toast('Product Category Created!', 'success');
@@ -52,12 +53,13 @@ class CategoriesController extends Controller
 
         $request->validate([
             'category_code' => 'required|unique:categories,category_code,' . $id,
-            'category_name' => 'required'
+            'category_name' => 'required',
         ]);
 
         Category::findOrFail($id)->update([
             'category_code' => $request->category_code,
             'category_name' => $request->category_name,
+            'category_type' => $request->category_type,
         ]);
 
         toast('Product Category Updated!', 'info');
